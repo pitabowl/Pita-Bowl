@@ -7,6 +7,7 @@
     "dev:3001": "next dev -p 3001",
     "run": "npm run build && next start",
     "build": "next build",
+    "build:godaddy": "BUILD_FOR_GODADDY=1 next build",
     "start": "next start",
     "lint": "next lint",
     "export-tv-menu": "node scripts/export-tv-menu.mjs"
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.9.0",
+    "@types/nodemailer": "^7.0.11",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "autoprefixer": "^10.4.20",

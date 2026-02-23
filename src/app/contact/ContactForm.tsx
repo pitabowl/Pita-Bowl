@@ -12,15 +12,27 @@ export function ContactForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID;
+    const url = formspreeId
+      ? `https://formspree.io/f/${formspreeId}`
+      : "/api/contact";
+    const body = formspreeId
+      ? JSON.stringify({
           name: data.get("name"),
           email: data.get("email"),
           message: data.get("message"),
-        }),
+        })
+      : JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          message: data.get("message"),
+        });
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body,
       });
       if (!res.ok) throw new Error("Submit failed");
       setStatus("done");
