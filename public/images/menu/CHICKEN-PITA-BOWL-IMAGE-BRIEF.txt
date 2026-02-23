@@ -1,0 +1,14 @@
+CHICKEN PITA BOWL - Image replacement brief
+============================================
+File to replace: chicken-pita-bowl.jpg
+
+REQUIREMENTS:
+- Show CHICKEN SHAWARMA (thinly sliced, rotisserie-style meat with char) — NO skewers, NO whole grilled chunks.
+- Bowl contents: white rice, mixed greens, chicken shawarma, hummus, tzatziki, cucumbers, feta cheese, corn, tahini dressing. No olives.
+- Style: Same as other bowl photos — rustic stoneware bowl (light beige/grey), wooden surface, top-down or slightly angled, bright soft natural lighting.
+- No people, no hands, no text.
+
+Prompt for AI image tools:
+"Restaurant food photography, top-down. Chicken pita bowl in a rustic stoneware bowl: white rice, mixed greens, chicken shawarma only (thinly sliced strips with charred edges, rotisserie-style, no skewers), hummus, tzatziki, cucumbers, feta, corn, tahini drizzle. On wooden table. Bright natural lighting. No olives."
+
+After replacing the file, hard-refresh the menu page (Cmd+Shift+R). The site uses ?v=3 so the new image will load.
