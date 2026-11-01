@@ -13,6 +13,7 @@
     "export-tv-menu": "node scripts/export-tv-menu.mjs"
   },
   "dependencies": {
+    "@aws-sdk/client-sesv2": "^3.1161.0",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.0",
