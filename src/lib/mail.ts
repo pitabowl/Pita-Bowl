@@ -1,18 +1,16 @@
 import nodemailer from "nodemailer";
+import { SESv2Client, SendEmailCommand } from "@aws-sdk/client-sesv2";
 
 export const TO_EMAIL = "orders@thepitabowl.com";
+export const FROM_EMAIL = "website@thepitabowl.com";
 
-/** Gmail SMTP via Google Workspace. Returns null when env vars are missing. */
+/**
+ * Amazon SES (us-west-2). On Amplify, credentials come from the app's compute
+ * role (PitaBowlAmplifyCompute); locally, from your AWS CLI login.
+ */
 export function getTransporter() {
-  const user = process.env.GOOGLE_EMAIL;
-  const pass = process.env.GOOGLE_APP_PASSWORD;
-  if (!user || !pass) return null;
-  return nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: { user, pass },
-  });
+  const sesClient = new SESv2Client({ region: "us-west-2" });
+  return nodemailer.createTransport({ SES: { sesClient, SendEmailCommand } });
 }
 
 /** Escape user input before putting it in an HTML email. */

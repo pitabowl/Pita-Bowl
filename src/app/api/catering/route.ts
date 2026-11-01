@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { TO_EMAIL, escapeHtml, getTransporter, str } from "@/lib/mail";
+import { FROM_EMAIL, TO_EMAIL, escapeHtml, getTransporter, str } from "@/lib/mail";
 
 export async function POST(request: Request) {
   try {
@@ -21,14 +21,8 @@ export async function POST(request: Request) {
     ];
 
     const transporter = getTransporter();
-    if (!transporter) {
-      console.error("[Catering request] Google email not configured. Set GOOGLE_EMAIL and GOOGLE_APP_PASSWORD in .env.local", fields);
-      return NextResponse.json({ error: "Email is not configured" }, { status: 500 });
-    }
-
-    const from = process.env.GOOGLE_EMAIL ?? TO_EMAIL;
     await transporter.sendMail({
-      from: `Pita Bowl Website <${from}>`,
+      from: `Pita Bowl Website <${FROM_EMAIL}>`,
       to: TO_EMAIL,
       replyTo: email,
       subject: `Catering request: ${name}${fields[3][1] ? ` (${fields[3][1]})` : ""}`,
