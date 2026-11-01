@@ -13,11 +13,17 @@ export function CateringForm() {
     const form = e.currentTarget;
     const data = new FormData(form);
 
+    // GoDaddy static export has no API routes, so use Formspree when an ID is set
+    const formspreeId =
+      process.env.NEXT_PUBLIC_FORMSPREE_CATERING_ID ?? process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID;
+    const url = formspreeId ? `https://formspree.io/f/${formspreeId}` : "/api/catering";
+
     try {
-      const res = await fetch("/api/catering", {
+      const res = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
+          ...(formspreeId && { _subject: `Catering request: ${data.get("name")}` }),
           name: data.get("name"),
           email: data.get("email"),
           phone: data.get("phone"),

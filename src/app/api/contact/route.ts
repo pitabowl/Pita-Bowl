@@ -1,28 +1,14 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
-
-const TO_EMAIL = "orders@thepitabowl.com";
-
-function getTransporter() {
-  const user = process.env.GOOGLE_EMAIL;
-  const pass = process.env.GOOGLE_APP_PASSWORD;
-  if (!user || !pass) return null;
-  return nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
-    auth: { user, pass },
-  });
-}
+import { TO_EMAIL, escapeHtml, getTransporter, str } from "@/lib/mail";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const name = typeof body.name === "string" ? body.name : "";
-    const email = typeof body.email === "string" ? body.email : "";
-    const message = typeof body.message === "string" ? body.message : "";
+    const name = str(body.name);
+    const email = str(body.email);
+    const message = str(body.message);
 
-    if (!name.trim() || !email.trim() || !message.trim()) {
+    if (!name || !email || !message) {
       return NextResponse.json({ error: "Name, email, and message are required" }, { status: 400 });
     }
 
@@ -40,9 +26,9 @@ export async function POST(request: Request) {
       subject: `Contact form: ${name}`,
       text: `From: ${name} <${email}>\n\n${message}`,
       html: `
-        <p><strong>From:</strong> ${name} &lt;${email}&gt;</p>
+        <p><strong>From:</strong> ${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;</p>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
+        <p>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
       `,
     });
 

@@ -52,10 +52,18 @@ export default function LocationPage() {
               </div>
 
               <div>
-                <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-wide mb-3">Parking & Nearby</h2>
+                <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-wide mb-3">Directions</h2>
                 <p className="text-foreground leading-relaxed">
-                  Placeholder for parking and nearby landmark info.
+                  On Mission Blvd in Mission Beach. Order ahead online for a quick pickup.
                 </p>
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=3833+Mission+Blvd,+San+Diego,+CA+92109"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-block font-semibold text-primary hover:underline"
+                >
+                  Get directions →
+                </a>
               </div>
 
               <div className="pt-4">

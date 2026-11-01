@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { MobileOrderBar } from "@/components/MobileOrderBar";
 import { JsonLdRestaurant } from "@/components/JsonLdRestaurant";
+import { SITE_URL } from "@/config/links";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,13 +36,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Pita Bowl",
+    images: ["/images/hero-pita-bowl.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Pita Bowl | Seed Oil Free • Fresh Daily",
     description: "Clean, flavorful shawarma and customizable bowls in San Diego.",
   },
-  metadataBase: new URL("https://pitabowlsd.com"),
+  metadataBase: new URL(SITE_URL),
 };
 
 export default function RootLayout({

@@ -1,3 +1,5 @@
+import { SITE_URL } from "@/config/links";
+
 /**
  * JSON-LD LocalBusiness / Restaurant schema for SEO.
  * Update address, phone, hours when real data is available.
@@ -9,8 +11,8 @@ export function JsonLdRestaurant() {
     name: "Pita Bowl",
     description:
       "Pita Bowl is a health- and wellness-forward restaurant in San Diego focused on clean, flavorful shawarma, customizable meals — made with fresh, daily-prepped ingredients and absolutely no seed oils.",
-    url: "https://pitabowlsd.com",
-    image: "https://pitabowlsd.com/og-image.jpg",
+    url: SITE_URL,
+    image: `${SITE_URL}/images/hero-pita-bowl.jpg`,
     address: {
       "@type": "PostalAddress",
       streetAddress: "3833 Mission Blvd",

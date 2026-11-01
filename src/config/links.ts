@@ -3,6 +3,9 @@
  * Use these constants everywhere — no duplication.
  */
 
+/** Canonical public domain (used for SEO metadata and JSON-LD). */
+export const SITE_URL = "https://www.thepitabowl.com";
+
 export const ORDER_ONLINE_URL =
   "https://order.toasttab.com/online/pita-bowl-3833-mission-blvd?diningOption=takeout&rwg_token=ACgRB3dacW5Jpbg-7pGaojxIhdpyd17NgG-Vl7AX-xr3tFDOduHTl85EijfWtdNmFZkzXTk9m3jL76OlTfeUC47oZl87-2rT7w%3D%3D";
 
