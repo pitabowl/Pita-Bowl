@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { MobileOrderBar } from "@/components/MobileOrderBar";
 import { JsonLdRestaurant } from "@/components/JsonLdRestaurant";
 import { SITE_URL } from "@/config/links";
+import { BUSINESS } from "@/lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,18 +18,7 @@ export const metadata: Metadata = {
     default: "Pita Bowl | Seed Oil Free • Fresh Daily • San Diego",
     template: "%s | Pita Bowl",
   },
-  description:
-    "Pita Bowl is a health- and wellness-forward restaurant in San Diego focused on clean, flavorful shawarma, customizable meals — made with fresh, daily-prepped ingredients and absolutely no seed oils.",
-  keywords: [
-    "pita bowl",
-    "san diego",
-    "seed oil free",
-    "mediterranean",
-    "shawarma",
-    "healthy food",
-    "custom bowls",
-    "mission blvd",
-  ],
+  description: BUSINESS.description,
   openGraph: {
     title: "Pita Bowl | Seed Oil Free • Fresh Daily • San Diego",
     description:

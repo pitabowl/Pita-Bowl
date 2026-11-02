@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Section, Container } from "@/components/Section";
 import { ValuePropBadges } from "@/components/Badge";
 import { OrderButton } from "@/components/OrderButton";
 import { FAQ } from "@/components/FAQ";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About — Seed-Oil-Free Mediterranean in San Diego",
-  alternates: { canonical: "/about" },
   description:
-    "Pita Bowl is a wellness-forward, Mediterranean-inspired restaurant in San Diego. Seed oil free, fresh daily prep, customizable bowls and wraps.",
-  openGraph: {
-    title: "About | Pita Bowl",
-    description: "Wellness-forward Mediterranean-inspired. Seed oil free, fresh daily.",
-  },
-};
+    "Pita Bowl is a wellness-forward Mediterranean restaurant in Mission Beach, San Diego. We cook with olive and avocado oil, never seed oils, and prep fresh daily.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Section, Container } from "@/components/Section";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Terms of Use",
-  alternates: { canonical: "/terms" },
-  description: "Terms of use for Pita Bowl website and ordering.",
-};
+  description:
+    "Terms of use for the Pita Bowl website, including online ordering, catering requests, offers and content on thepitabowl.com.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

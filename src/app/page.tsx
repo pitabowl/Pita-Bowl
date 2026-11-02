@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { LOCATION_URL } from "@/config/links";
 import { HeroSection } from "@/components/HeroSection";
@@ -9,9 +10,13 @@ import { PromoStrip } from "@/components/PromoStrip";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { Button } from "@/components/ui/button";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "/" },
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Pita Bowl | Seed-Oil-Free Shawarma in Mission Beach, San Diego",
+  description:
+    "Seed-oil-free shawarma, falafel and Mediterranean bowls and wraps on Mission Blvd in Mission Beach, San Diego. Fresh daily and fully customizable.",
+  path: "/",
+  absoluteTitle: true,
+});
 
 const STEPS = [
   { step: 1, label: "Pick your base" },

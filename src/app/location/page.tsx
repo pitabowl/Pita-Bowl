@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { OrderButton } from "@/components/OrderButton";
 import { Section, Container } from "@/components/Section";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Location & Hours — 3833 Mission Blvd, Mission Beach",
-  alternates: { canonical: "/location" },
-  description: "Visit Pita Bowl at 3833 Mission Blvd, San Diego. Hours, parking, and directions.",
-  openGraph: {
-    title: "Location | Pita Bowl",
-    description: "3833 Mission Blvd, San Diego. Order online for pickup.",
-  },
-};
+  description:
+    "Pita Bowl is at 3833 Mission Blvd in Mission Beach, San Diego. Open daily from 11 AM, until 9 PM on Fridays and Saturdays. Get directions or order ahead for pickup.",
+  path: "/location",
+});
 
 export default function LocationPage() {
   return (

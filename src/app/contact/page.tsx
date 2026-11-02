@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ContactForm } from "./ContactForm";
 import { Section, Container } from "@/components/Section";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact Us — Mission Beach, San Diego",
-  alternates: { canonical: "/contact" },
-  description: "Get in touch with Pita Bowl. Contact form, email, and phone.",
-  openGraph: {
-    title: "Contact | Pita Bowl",
-    description: "Contact us for questions or feedback.",
-  },
-};
+  description:
+    "Contact Pita Bowl at 3833 Mission Blvd, San Diego. Call 858-210-9524, email orders@thepitabowl.com, or send us a message.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

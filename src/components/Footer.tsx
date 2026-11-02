@@ -20,6 +20,17 @@ const footerLinks = [
   { href: CONTACT_URL, label: "Contact" },
 ];
 
+/** Sitewide links to key dish pages (internal linking for search). */
+const popularDishes = [
+  { href: "/menu/chicken-pita-bowl", label: "Chicken Shawarma Bowl" },
+  { href: "/menu/steak-shawarma-bowl", label: "Steak Shawarma Bowl" },
+  { href: "/menu/cali-shawarma-wrap", label: "Cali Shawarma Wrap" },
+  { href: "/menu/falafel", label: "Falafel" },
+  { href: "/menu/earth-bowl", label: "Vegetarian Earth Bowl" },
+  { href: "/menu/chicken-shawarma-fries", label: "Shawarma Fries" },
+  { href: "/menu/pistachio-baklava", label: "Baklava" },
+];
+
 const legalLinks = [
   { href: PRIVACY_URL, label: "Privacy" },
   { href: TERMS_URL, label: "Terms" },
@@ -42,8 +53,18 @@ export function Footer() {
           <div>
             <p className="font-semibold text-foreground mb-4">Visit</p>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li>3833 Mission Blvd</li>
-              <li>San Diego, CA 92109</li>
+              <li>
+                <Link href={LOCATION_URL} className="hover:text-primary transition-colors">
+                  3833 Mission Blvd
+                  <br />
+                  San Diego, CA 92109
+                </Link>
+              </li>
+              <li>
+                <a href="tel:+18582109524" className="hover:text-primary transition-colors">
+                  (858) 210-9524
+                </a>
+              </li>
               <li className="pt-2 text-xs uppercase tracking-wide text-muted-foreground/80">Hours</li>
               <li>Thursday: 11 AM–8 PM</li>
               <li>Friday: 11 AM–9 PM</li>
@@ -70,9 +91,9 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <p className="font-semibold text-foreground mb-4">Legal</p>
+            <p className="font-semibold text-foreground mb-4">Popular dishes</p>
             <ul className="space-y-3">
-              {legalLinks.map(({ href, label }) => (
+              {popularDishes.map(({ href, label }) => (
                 <li key={href}>
                   <Link
                     href={href}
@@ -85,8 +106,15 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-12 border-t border-border/50 pt-8 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Pita Bowl. All rights reserved.
+        <div className="mt-12 flex flex-col items-center gap-3 border-t border-border/50 pt-8 text-sm text-muted-foreground sm:flex-row sm:justify-between">
+          <span>© {new Date().getFullYear()} Pita Bowl. All rights reserved.</span>
+          <span className="flex gap-6">
+            {legalLinks.map(({ href, label }) => (
+              <Link key={href} href={href} className="hover:text-primary transition-colors">
+                {label}
+              </Link>
+            ))}
+          </span>
         </div>
       </div>
     </footer>
