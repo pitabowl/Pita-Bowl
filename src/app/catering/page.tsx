@@ -5,7 +5,8 @@ import { Section, Container } from "@/components/Section";
 import { ValuePropBadges } from "@/components/Badge";
 
 export const metadata: Metadata = {
-  title: "Catering | Pita Bowl — Group Orders San Diego",
+  title: "Catering in San Diego — Seed-Oil-Free Group Orders",
+  alternates: { canonical: "/catering" },
   description:
     "Cater your next event with Pita Bowl. Group-friendly, fresh daily, customizable. Seed oil free Mediterranean bowls and wraps.",
   openGraph: {

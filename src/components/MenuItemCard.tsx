@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { MenuItem } from "@/data/menu";
 import { Badge } from "@/components/Badge";
+import { dishSlugForItem } from "@/data/dishes";
 import { cn } from "@/lib/utils";
 
 interface MenuItemCardProps {
@@ -10,10 +12,11 @@ interface MenuItemCardProps {
 }
 
 export function MenuItemCard({ item, showPrice = true, className }: MenuItemCardProps) {
+  const dishSlug = dishSlugForItem(item.id);
   return (
     <article
       className={cn(
-        "group rounded-2xl border border-border/50 bg-card overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] hover:border-primary/20",
+        "group relative rounded-2xl border border-border/50 bg-card overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02] hover:border-primary/20",
         className
       )}
     >
@@ -31,7 +34,13 @@ export function MenuItemCard({ item, showPrice = true, className }: MenuItemCard
       <div className="flex flex-col gap-3 p-6">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">
-            {item.name}
+            {dishSlug ? (
+              <Link href={`/menu/${dishSlug}`} className="after:absolute after:inset-0">
+                {item.name}
+              </Link>
+            ) : (
+              item.name
+            )}
           </h3>
           {showPrice && item.price && (
             <span className="shrink-0 text-lg font-semibold text-primary">

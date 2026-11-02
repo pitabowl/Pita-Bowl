@@ -5,7 +5,8 @@ import { OrderButton } from "@/components/OrderButton";
 import { FAQ } from "@/components/FAQ";
 
 export const metadata: Metadata = {
-  title: "About | Pita Bowl — Seed Oil Free, Fresh Daily, San Diego",
+  title: "About — Seed-Oil-Free Mediterranean in San Diego",
+  alternates: { canonical: "/about" },
   description:
     "Pita Bowl is a wellness-forward, Mediterranean-inspired restaurant in San Diego. Seed oil free, fresh daily prep, customizable bowls and wraps.",
   openGraph: {
