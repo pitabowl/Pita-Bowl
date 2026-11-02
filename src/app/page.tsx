@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { LOCATION_URL } from "@/config/links";
 import { HeroSection } from "@/components/HeroSection";
@@ -7,6 +8,10 @@ import { ValuePropBadges } from "@/components/Badge";
 import { PromoStrip } from "@/components/PromoStrip";
 import { TestimonialCard } from "@/components/TestimonialCard";
 import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const STEPS = [
   { step: 1, label: "Pick your base" },

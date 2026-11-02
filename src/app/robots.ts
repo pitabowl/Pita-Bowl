@@ -1,0 +1,10 @@
+import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/config/links";
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: { userAgent: "*", allow: "/", disallow: ["/api/", "/menu/tv"] },
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
+  };
+}

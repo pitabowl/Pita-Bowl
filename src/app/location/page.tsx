@@ -3,7 +3,8 @@ import { OrderButton } from "@/components/OrderButton";
 import { Section, Container } from "@/components/Section";
 
 export const metadata: Metadata = {
-  title: "Location | Pita Bowl — San Diego",
+  title: "Location & Hours — 3833 Mission Blvd, Mission Beach",
+  alternates: { canonical: "/location" },
   description: "Visit Pita Bowl at 3833 Mission Blvd, San Diego. Hours, parking, and directions.",
   openGraph: {
     title: "Location | Pita Bowl",

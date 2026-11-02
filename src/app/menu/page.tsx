@@ -7,7 +7,8 @@ import { Section, Container } from "@/components/Section";
 import { ValuePropBadges } from "@/components/Badge";
 
 export const metadata: Metadata = {
-  title: "Menu | Pita Bowl — Bowls, Wraps, Sides & Sauces",
+  title: "Menu — Shawarma Bowls, Wraps & Falafel in Mission Beach",
+  alternates: { canonical: "/menu" },
   description:
     "Build your bowl or wrap: choose base, dip, protein, toppings, sauce. Bowls & wraps, sides, sauces, and drinks. Seed oil free, fresh daily.",
   openGraph: {

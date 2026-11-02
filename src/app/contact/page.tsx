@@ -3,7 +3,8 @@ import { ContactForm } from "./ContactForm";
 import { Section, Container } from "@/components/Section";
 
 export const metadata: Metadata = {
-  title: "Contact | Pita Bowl — San Diego",
+  title: "Contact Us — Mission Beach, San Diego",
+  alternates: { canonical: "/contact" },
   description: "Get in touch with Pita Bowl. Contact form, email, and phone.",
   openGraph: {
     title: "Contact | Pita Bowl",

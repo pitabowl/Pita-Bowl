@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Section, Container } from "@/components/Section";
 
 export const metadata: Metadata = {
-  title: "Terms of Use | Pita Bowl",
+  title: "Terms of Use",
+  alternates: { canonical: "/terms" },
   description: "Terms of use for Pita Bowl website and ordering.",
 };
 

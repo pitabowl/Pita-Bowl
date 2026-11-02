@@ -4,7 +4,8 @@ import { Section, Container } from "@/components/Section";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Offers | Pita Bowl — FIT 15% Off",
+  title: "Offers — FIT Members Get 15% Off",
+  alternates: { canonical: "/offers" },
   description: "FIT members get 15% off at checkout. Pita Bowl San Diego.",
   openGraph: {
     title: "Offers | Pita Bowl",
