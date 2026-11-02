@@ -42,4 +42,6 @@ export interface FaqPage {
   relatedDishes: string[];
   /** Site paths, e.g. "/catering", "/dietary/vegan", "/guides/what-is-falafel" */
   relatedPaths: string[];
+  /** Optional button under the answer, e.g. to buy a gift card */
+  cta?: { label: string; href: string };
 }

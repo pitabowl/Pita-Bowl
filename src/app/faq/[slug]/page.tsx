@@ -38,6 +38,16 @@ export default function FaqAnswerPage({ params }: { params: { slug: string } }) 
       <JsonLd data={pageGraph({ path, title: f.seoTitle, description: f.metaDescription, crumbs, faqs: [{ q: f.q, a: f.answer }] })} />
       <PageHero crumbs={crumbs} title={f.q}>
         <p className="text-xl leading-relaxed text-foreground">{f.answer}</p>
+        {f.cta && (
+          <a
+            href={f.cta.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
+          >
+            {f.cta.label}
+          </a>
+        )}
       </PageHero>
       <Section className="bg-background py-12 md:py-20">
         <Container className="max-w-3xl space-y-14">
