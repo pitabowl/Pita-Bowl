@@ -14,8 +14,9 @@ export const BUSINESS = {
   region: "CA",
   postalCode: "92109",
   country: "US",
-  lat: 32.77,
-  lng: -117.2514,
+  // From OpenStreetMap geocoding of the street address
+  lat: 32.78548,
+  lng: -117.25295,
   hours: [
     { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"], opens: "11:00", closes: "20:00" },
     { days: ["Friday", "Saturday"], opens: "11:00", closes: "21:00" },
@@ -97,7 +98,6 @@ export function restaurantSchema() {
     })),
     servesCuisine: ["Mediterranean", "Middle Eastern"],
     priceRange: "$$",
-    acceptsReservations: false,
     hasMenu: { "@id": SCHEMA_IDS.menu },
     potentialAction: {
       "@type": "OrderAction",

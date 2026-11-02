@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { guides } from "@/data/guides";
+import { allGuides as guides } from "@/data/content";
 import { JsonLd, pageGraph, pageMetadata } from "@/lib/seo";
 import { Section, Container } from "@/components/Section";
 import { LinkGrid, PageHero, Prose } from "@/components/content/PageParts";

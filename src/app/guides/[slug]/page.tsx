@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getGuide, guides } from "@/data/guides";
+import { allGuides as guides, getAnyGuide as getGuide } from "@/data/content";
 import { dishCard, guideCard, isCard } from "@/data/landing";
 import { SITE_URL } from "@/config/links";
 import { BUSINESS, JsonLd, SCHEMA_IDS, pageGraph, pageMetadata } from "@/lib/seo";
@@ -33,6 +33,12 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
     { name: "Guides", path: "/guides" },
     { name: g.title, path },
   ];
+  // Neighbors in list order, so every guide is linked from a few others
+  const i = guides.findIndex((x) => x.slug === g.slug);
+  const moreGuides = [1, 2, -1, -2]
+    .map((o) => guides[(i + o + guides.length) % guides.length])
+    .filter((x) => !g.relatedGuides.includes(x.slug))
+    .map((x) => ({ href: `/guides/${x.slug}`, title: x.title }));
 
   return (
     <>
@@ -74,6 +80,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
           <FaqList title="Quick answers" faqs={g.faqs} />
           <LinkGrid title="Try it at Pita Bowl" links={g.relatedDishes.map((s) => dishCard(s)).filter(isCard)} />
           <LinkGrid title="Related guides" links={g.relatedGuides.map(guideCard).filter(isCard)} />
+          <LinkGrid title="More guides" links={moreGuides} />
           <div className="rounded-3xl border border-border/50 bg-card p-8 text-center shadow-sm">
             <p className="text-lg text-muted-foreground mb-6">
               Pita Bowl is at <Link href="/location" className="text-primary hover:underline">3833 Mission Blvd</Link> in

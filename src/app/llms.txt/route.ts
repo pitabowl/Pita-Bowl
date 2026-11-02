@@ -2,8 +2,8 @@ import { SITE_URL } from "@/config/links";
 import { dishes } from "@/data/dishes";
 import { menuCategories } from "@/data/menu";
 import { BUSINESS } from "@/lib/seo";
-import { cateringCopy, dietCopy } from "@/data/landing-copy";
-import { guides } from "@/data/guides";
+import { dietCopy } from "@/data/landing-copy";
+import { allCatering as cateringCopy, allGuides as guides, areaPages, attractionPages, faqPages, ingredientPages } from "@/data/content";
 
 export const dynamic = "force-static";
 
@@ -55,6 +55,20 @@ ${cateringCopy.map((c) => `- [${c.h1}](${SITE_URL}/catering/${c.slug}): ${c.meta
 ## Guides
 
 ${guides.map((g) => `- [${g.title}](${SITE_URL}/guides/${g.slug}): ${g.summary}`).join("\n")}
+
+## FAQ
+
+${faqPages.map((f) => `- [${f.q}](${SITE_URL}/faq/${f.slug}): ${f.answer}`).join("\n")}
+
+## Ingredients
+
+${ingredientPages.map((i) => `- [${i.name}](${SITE_URL}/ingredients/${i.slug}): ${i.summary}`).join("\n")}
+
+## Distance from San Diego neighborhoods and attractions
+
+${[...areaPages, ...attractionPages]
+  .map((p) => `- [${p.name}](${SITE_URL}/${p.kind === "area" ? "areas" : "near"}/${p.slug}): ${p.driveMiles} mi, about ${Math.max(1, p.driveMinutes)} min drive`)
+  .join("\n")}
 `;
 
   return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8" } });

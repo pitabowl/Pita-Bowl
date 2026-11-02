@@ -5,8 +5,8 @@
  */
 import { dishes, getDish } from "@/data/dishes";
 import { menuCategories, type MenuItem, type MenuTag } from "@/data/menu";
-import { dietCopy, cateringCopy } from "@/data/landing-copy";
-import { getGuide } from "@/data/guides";
+import { dietCopy } from "@/data/landing-copy";
+import { getAnyCatering, getAnyGuide, titleForPath } from "@/data/content";
 import type { LinkCard } from "@/components/content/PageParts";
 
 const itemsById = new Map(menuCategories.flatMap((c) => c.items.map((i) => [i.id, i] as const)));
@@ -23,7 +23,7 @@ export function dishCard(slug: string, detail?: string): LinkCard | undefined {
 }
 
 export function guideCard(slug: string): LinkCard | undefined {
-  const g = getGuide(slug);
+  const g = getAnyGuide(slug);
   return g && { href: `/guides/${g.slug}`, title: g.title };
 }
 
@@ -62,7 +62,13 @@ export function getDietCopy(slug: string) {
 }
 
 export function getCateringCopy(slug: string) {
-  return cateringCopy.find((c) => c.slug === slug);
+  return getAnyCatering(slug);
+}
+
+/** Link card for any site path; undefined when the target page doesn't exist. */
+export function pathCard(path: string): LinkCard | undefined {
+  const title = titleForPath(path);
+  return title ? { href: path, title } : undefined;
 }
 
 /** Diet pages a dish appears on (for linking back from dish pages). */

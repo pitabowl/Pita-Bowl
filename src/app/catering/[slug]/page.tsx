@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { cateringCopy } from "@/data/landing-copy";
+import { allCatering as cateringCopy } from "@/data/content";
 import { dishCard, getCateringCopy, guideCard, isCard } from "@/data/landing";
 import { JsonLd, SCHEMA_IDS, pageGraph, pageMetadata } from "@/lib/seo";
 import { Section, Container } from "@/components/Section";
@@ -29,8 +29,10 @@ export default function CateringOccasionPage({ params }: { params: { slug: strin
     { name: copy.h1, path },
   ];
   const orderLinks = copy.whatToOrder.map((w) => dishCard(w.dish, w.why)).filter(isCard);
-  const otherOccasions = cateringCopy
-    .filter((c) => c.slug !== copy.slug)
+  // Six neighboring occasions (wrapping around the list) so every page gets inbound links
+  const idx = cateringCopy.findIndex((c) => c.slug === copy.slug);
+  const otherOccasions = [1, 2, 3, -1, -2, -3]
+    .map((o) => cateringCopy[(idx + o + cateringCopy.length) % cateringCopy.length])
     .map((c) => ({ href: `/catering/${c.slug}`, title: c.h1 }));
 
   return (
