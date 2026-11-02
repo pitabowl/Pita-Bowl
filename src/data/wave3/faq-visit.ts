@@ -4,6 +4,7 @@
  * app names, seat counts, Wi-Fi details) without checking with them first.
  */
 import type { FaqPage } from "./types";
+import { GIFT_CARD_URL } from "@/config/links";
 
 export const visitFaqs: FaqPage[] = [
   {
@@ -102,7 +103,7 @@ export const visitFaqs: FaqPage[] = [
     details: [
       "Pay however is easiest for you at the counter. Tap your phone or card, insert or swipe a card, or pay with cash.",
       "When you order online through our website, you pay during checkout on our Toast ordering page, so your food is ready to pick up without stopping to pay. Delivery app orders are paid in the app.",
-      "Gift cards are available in store and online, and they make an easy gift for anyone who spends time in Mission Beach.",
+      "Gift cards are available in store and online through our Toast gift card page, and they make an easy gift for anyone who spends time in Mission Beach.",
       "FIT members get 15% off. See our offers page for how the discount works.",
     ],
     relatedDishes: [],
@@ -115,11 +116,12 @@ export const visitFaqs: FaqPage[] = [
     metaDescription:
       "Yes. Pita Bowl sells gift cards in store and online. They're good for bowls, wraps, desserts and drinks at 3833 Mission Blvd in Mission Beach.",
     answer:
-      "Yes. You can buy Pita Bowl gift cards in store at the counter or online.",
+      "Yes. You can buy Pita Bowl gift cards in store at the counter or online through our Toast gift card page, where you can send an eGift card by email.",
+    cta: { label: "Buy a gift card", href: GIFT_CARD_URL },
     details: [
       "A gift card is an easy present for a friend who lives near the beach, a coworker, or someone who's always looking for a seed-oil-free meal. It covers the whole menu, from bowls and wraps to housemade desserts and drinks.",
       "To buy one in person, ask at the counter when you visit 3833 Mission Blvd. You can pay with a card, cash, Apple Pay or Google Pay.",
-      "If you'd rather buy online or have a question about a gift card, call us at 858-210-9524 or email orders@thepitabowl.com and we'll point you in the right direction.",
+      "To buy online, use the Buy a gift card button on this page. It opens our Toast gift card page, where you choose an amount and send it by email. If you have a question about a gift card, call us at 858-210-9524 or email orders@thepitabowl.com.",
       "Gift cards make a good thank-you for volunteers or a team too. For feeding a group directly, our catering page lets you request a quote instead.",
     ],
     relatedDishes: ["pistachio-baklava", "tiramisu"],

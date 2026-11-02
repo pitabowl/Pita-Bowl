@@ -9,6 +9,8 @@ export const SITE_URL = "https://www.thepitabowl.com";
 export const ORDER_ONLINE_URL =
   "https://order.toasttab.com/online/pita-bowl-3833-mission-blvd?diningOption=takeout&rwg_token=ACgRB3dacW5Jpbg-7pGaojxIhdpyd17NgG-Vl7AX-xr3tFDOduHTl85EijfWtdNmFZkzXTk9m3jL76OlTfeUC47oZl87-2rT7w%3D%3D";
 
+export const GIFT_CARD_URL = "https://order.toasttab.com/egiftcards/pita-bowl-3833-mission-blvd";
+
 export const MENU_URL = "/menu";
 export const CATERING_URL = "/catering";
 export const OFFERS_URL = "/offers";
