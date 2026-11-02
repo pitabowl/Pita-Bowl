@@ -1,10 +1,12 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/config/links";
 import { dishes } from "@/data/dishes";
-import { cateringCopy, dietCopy } from "@/data/landing-copy";
-import { guides } from "@/data/guides";
+import { dietCopy } from "@/data/landing-copy";
+import { allCatering, allGuides, areaPages, attractionPages, faqPages, ingredientPages } from "@/data/content";
 
-const PAGES: { path: string; priority: number; changeFrequency: "weekly" | "monthly" | "yearly" }[] = [
+type Freq = "weekly" | "monthly" | "yearly";
+
+const PAGES: { path: string; priority: number; changeFrequency: Freq }[] = [
   { path: "", priority: 1, changeFrequency: "weekly" },
   { path: "/menu", priority: 0.9, changeFrequency: "weekly" },
   { path: "/catering", priority: 0.8, changeFrequency: "monthly" },
@@ -13,43 +15,37 @@ const PAGES: { path: string; priority: number; changeFrequency: "weekly" | "mont
   { path: "/about", priority: 0.6, changeFrequency: "monthly" },
   { path: "/dietary", priority: 0.7, changeFrequency: "monthly" },
   { path: "/guides", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/ingredients", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/faq", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/areas", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/near", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.5, changeFrequency: "yearly" },
   { path: "/privacy", priority: 0.1, changeFrequency: "yearly" },
   { path: "/terms", priority: 0.1, changeFrequency: "yearly" },
 ];
 
+const SECTIONS: { base: string; slugs: string[]; priority: number }[] = [
+  { base: "/menu", slugs: dishes.map((d) => d.slug), priority: 0.7 },
+  { base: "/dietary", slugs: dietCopy.map((d) => d.slug), priority: 0.7 },
+  { base: "/catering", slugs: allCatering.map((c) => c.slug), priority: 0.6 },
+  { base: "/faq", slugs: faqPages.map((f) => f.slug), priority: 0.5 },
+  { base: "/areas", slugs: areaPages.map((a) => a.slug), priority: 0.5 },
+  { base: "/near", slugs: attractionPages.map((a) => a.slug), priority: 0.5 },
+  { base: "/guides", slugs: allGuides.map((g) => g.slug), priority: 0.5 },
+  { base: "/ingredients", slugs: ingredientPages.map((i) => i.slug), priority: 0.4 },
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   return [
-    ...PAGES.map(({ path, priority, changeFrequency }) => ({
-      url: `${SITE_URL}${path}`,
-      lastModified,
-      changeFrequency,
-      priority,
-    })),
-    ...dishes.map((d) => ({
-      url: `${SITE_URL}/menu/${d.slug}`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })),
-    ...dietCopy.map((d) => ({
-      url: `${SITE_URL}/dietary/${d.slug}`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    })),
-    ...cateringCopy.map((c) => ({
-      url: `${SITE_URL}/catering/${c.slug}`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    })),
-    ...guides.map((g) => ({
-      url: `${SITE_URL}/guides/${g.slug}`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.5,
-    })),
+    ...PAGES.map(({ path, priority, changeFrequency }) => ({ url: `${SITE_URL}${path}`, lastModified, changeFrequency, priority })),
+    ...SECTIONS.flatMap(({ base, slugs, priority }) =>
+      slugs.map((slug) => ({
+        url: `${SITE_URL}${base}/${slug}`,
+        lastModified,
+        changeFrequency: "monthly" as const,
+        priority,
+      }))
+    ),
   ];
 }

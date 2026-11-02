@@ -4,7 +4,7 @@ import { CateringForm } from "./CateringForm";
 import { OrderButton } from "@/components/OrderButton";
 import { Section, Container } from "@/components/Section";
 import { ValuePropBadges } from "@/components/Badge";
-import { cateringCopy } from "@/data/landing-copy";
+import { allCatering as cateringCopy } from "@/data/content";
 import { LinkGrid } from "@/components/content/PageParts";
 
 export const metadata: Metadata = pageMetadata({

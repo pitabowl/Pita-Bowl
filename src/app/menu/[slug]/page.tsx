@@ -8,7 +8,7 @@ import { LOCATION_URL, MENU_URL, SITE_URL } from "@/config/links";
 import { OrderButton } from "@/components/OrderButton";
 import { JsonLd, SCHEMA_IDS, pageMetadata } from "@/lib/seo";
 import { dietsForDish } from "@/data/landing";
-import { guides } from "@/data/guides";
+import { allGuides as guides } from "@/data/content";
 import { Badge } from "@/components/Badge";
 import { Section, Container } from "@/components/Section";
 
@@ -77,7 +77,7 @@ export default function DishPage({ params }: { params: { slug: string } }) {
     .map((d) => ({ dish: d, ...menuEntry(d) }))
     .filter(({ category: c }) => c.id === category.id);
 
-  const guidesForDish = guides.filter((g) => g.relatedDishes.includes(dish.slug));
+  const guidesForDish = guides.filter((g) => g.relatedDishes.includes(dish.slug)).slice(0, 8);
 
   const diets = [
     item.tags.includes("vegan") && "https://schema.org/VeganDiet",
