@@ -17,6 +17,7 @@ import { ingredients2 } from "@/data/wave3/ingredients-2";
 import { catering1 } from "@/data/wave3/catering-1";
 import { catering2 } from "@/data/wave3/catering-2";
 import { faqPages as faqList } from "@/data/wave3/faq";
+import { visitFaqs } from "@/data/wave3/faq-visit";
 import { areas1 } from "@/data/wave3/areas-1";
 import { areas2 } from "@/data/wave3/areas-2";
 import { areas3 } from "@/data/wave3/areas-3";
@@ -38,7 +39,7 @@ export const allGuides: Guide[] = [
 ];
 export const ingredientPages = [...ingredients1, ...ingredients2];
 export const allCatering = [...baseCatering, ...catering1, ...catering2];
-export const faqPages = faqList;
+export const faqPages = [...faqList, ...visitFaqs];
 
 export interface Place extends PlaceCopy {
   kind: "area" | "attraction";
