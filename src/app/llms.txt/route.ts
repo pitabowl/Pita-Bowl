@@ -23,7 +23,10 @@ export function GET() {
 - Email: ${BUSINESS.email}
 - Hours: ${hours}
 - Cooking oils: olive oil and avocado oil only — no seed oils (canola, soybean, etc.) in anything
-- Service: takeout and pickup; order online at ${SITE_URL}/menu
+- Service: dine-in (indoor and outdoor seating), takeout, pickup (usually 10–15 minutes) and delivery; order online at ${SITE_URL}/menu or by phone
+- Halal: chicken shawarma, chicken tikka and falafel are halal; steak and beef are not
+- Walk-in only (no reservations); dogs welcome at outdoor seating; free Wi-Fi
+- Payment: credit and debit cards, cash, Apple Pay, Google Pay; gift cards sold in store and online
 - Catering: available for groups and events (${SITE_URL}/catering)
 - Offers: FIT members get 15% off (${SITE_URL}/offers)
 

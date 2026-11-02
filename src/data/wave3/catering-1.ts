@@ -2,7 +2,7 @@
  * Wave 3 catering occasion pages (/catering/[slug]), batch 1:
  * life events, holidays, campus, school and youth sports.
  * Only verified business facts. Delivery, setup, minimums and holiday hours
- * are always "ask when you request a quote". No halal claims.
+ * are always "ask when you request a quote". Halal: chicken and falafel only (owner, 2026-11-01).
  */
 import type { CateringCopy } from "./types";
 
@@ -905,11 +905,11 @@ export const catering1: CateringCopy[] = [
     h1: "Ramadan Iftar Catering in San Diego",
     seoTitle: "Ramadan Iftar Catering in San Diego",
     metaDescription:
-      "Iftar catering in San Diego during Ramadan: chicken tikka, shawarma, falafel and lentil bowls timed for sunset. Ask us directly about ingredients and meat.",
+      "Iftar catering in San Diego during Ramadan: halal chicken tikka, chicken shawarma and falafel, timed for sunset. Our steak and beef are not halal.",
     intro: [
       "During Ramadan, many Muslims fast from dawn until sunset, and iftar is the meal that breaks the fast each evening. Many people begin with dates and water, following the practice of the Prophet Muhammad, then pray the sunset prayer, maghrib, before sitting down to a fuller meal. Community iftars at mosques, student associations, and workplaces gather people around that moment, and guests of other faiths are often welcome too.",
       "Timing is everything. Sunset shifts a little each day, and Ramadan moves roughly eleven days earlier each year on the Gregorian calendar, so iftar can fall in the early evening one year and much later some years on. Food needs to be ready at a fixed moment for people who haven't eaten or had water since before dawn. We close at 8 PM Sunday through Thursday and 9 PM on Friday and Saturday, so plan pickup around both sunset and our hours.",
-      "Halal is a requirement for many people observing Ramadan. We don't make halal claims on this site, so ask us directly about our meat before ordering and decide what's right for your guests. Falafel and the Earth Bowl contain no meat. Fill out the Request a Quote form with the date, headcount, and sunset time, and we'll get back to you with details and pricing.",
+      "Halal is a requirement for many people observing Ramadan. Our chicken shawarma, chicken tikka and falafel are halal; our steak and beef are not, so build a halal spread around the chicken and falafel dishes. Fill out the Request a Quote form with the date, headcount, and sunset time, and we'll get back to you with details and pricing.",
     ],
     whatToOrder: [
       {
@@ -922,7 +922,7 @@ export const catering1: CateringCopy[] = [
       },
       {
         dish: "chicken-tikka-bowl",
-        why: "Chicken tikka on saffron rice for guests who want meat. Ask us about our meat first if halal matters to them.",
+        why: "Halal chicken tikka on saffron rice for guests who want meat.",
       },
       {
         dish: "dip-and-pita",
@@ -935,7 +935,7 @@ export const catering1: CateringCopy[] = [
     ],
     planningTips: [
       "Look up the sunset time for your date and put it in the notes, along with when you want food on the table.",
-      "Ask us directly about our meat if halal is a requirement for your guests. We don't make halal claims here.",
+      "Keep steak dishes off a halal menu. Choose chicken shawarma, chicken tikka and falafel, and ask us how they're handled in the kitchen if that matters to your guests.",
       "Dates aren't on our menu, so plan to bring your own for breaking the fast.",
       "Have water and drinks at every seat before sunset. That's what guests reach for first.",
       "Hosting several iftars during the month? Put the full schedule in one quote request.",
@@ -943,7 +943,7 @@ export const catering1: CateringCopy[] = [
     faqs: [
       {
         q: "Is your food halal?",
-        a: "We don't make halal claims on this site. Please ask us directly about our meat before ordering so you can decide what works for your guests.",
+        a: "Our chicken shawarma, chicken tikka and falafel are halal. Our steak and beef are not halal.",
       },
       {
         q: "Can you have food ready for sunset?",

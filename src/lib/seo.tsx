@@ -98,6 +98,14 @@ export function restaurantSchema() {
     })),
     servesCuisine: ["Mediterranean", "Middle Eastern"],
     priceRange: "$$",
+    acceptsReservations: false,
+    paymentAccepted: "Cash, Credit Card, Debit Card, Apple Pay, Google Pay",
+    currenciesAccepted: "USD",
+    amenityFeature: ["Indoor seating", "Outdoor seating", "Free Wi-Fi", "Dogs allowed outdoors"].map((name) => ({
+      "@type": "LocationFeatureSpecification",
+      name,
+      value: true,
+    })),
     hasMenu: { "@id": SCHEMA_IDS.menu },
     potentialAction: {
       "@type": "OrderAction",

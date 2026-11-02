@@ -10,9 +10,9 @@ export const faqPages: FaqPage[] = [
     q: "Do you offer pickup?",
     seoTitle: "Does Pita Bowl Offer Pickup? Takeout in Mission Beach",
     metaDescription:
-      "Yes, Pita Bowl is a takeout and pickup spot at 3833 Mission Blvd. Order online through our site, then grab your bowls and wraps on the way to the beach.",
+      "Yes. Order Pita Bowl online or by phone and pick it up at 3833 Mission Blvd, usually in 10 to 15 minutes. Grab your bowls and wraps on the way to the beach.",
     answer:
-      "Yes. Pita Bowl is a takeout and pickup restaurant at 3833 Mission Blvd in Mission Beach. You can order online from our website and pick your food up at the counter.",
+      "Yes. Order online from our website or call 858-210-9524, then pick your food up at the counter at 3833 Mission Blvd in Mission Beach. Most orders are ready in about 10 to 15 minutes.",
     details: [
       "Pickup is how most people eat our food. Bowls, wraps, fries and desserts are all packed to go, which makes them easy to carry a few minutes down the street to the boardwalk or over to the bay. We're open Sunday through Thursday from 11 AM to 8 PM, and Friday and Saturday from 11 AM to 9 PM.",
       "The online menu runs through Toast and has the full lineup, including build-your-own bowls and wraps where you pick your base, dip, protein, toppings and sauce. Ordering ahead lets you customize everything without rushing at the counter.",
@@ -20,7 +20,7 @@ export const faqPages: FaqPage[] = [
       "A few things make pickup smoother. Check your order before you leave the counter, especially if you customized it, and ask for sauces and dressings on the side if the food will sit for a while before you eat. Fries are best eaten soon after pickup, while bowls hold up well for longer.",
     ],
     relatedDishes: ["chicken-pita-bowl", "cali-shawarma-wrap"],
-    relatedPaths: ["/faq/how-do-i-order-online", "/faq/what-are-your-hours", "/guides/how-to-order-ahead-for-pickup", "/location"],
+    relatedPaths: ["/faq/how-do-i-order-online", "/faq/how-long-does-pickup-take", "/faq/does-pita-bowl-deliver", "/guides/how-to-order-ahead-for-pickup", "/location"],
   },
   {
     slug: "how-do-i-order-online",
@@ -51,7 +51,7 @@ export const faqPages: FaqPage[] = [
       "Those hours cover lunch and dinner every day of the week. We open at 11 AM, so a late-morning beach session can end with a bowl right as the doors open. Weekends run an hour later, which helps if you're staying out to watch the sunset over the ocean.",
       "Holiday hours can differ from the regular schedule. If you're planning around a specific date, call 858-210-9524 to confirm before you head over.",
       "The fastest way to get food during busy stretches is to order online ahead of time through our website and pick it up when it's ready. Call ahead if you want to check on anything before you come in.",
-      "Lunch hours tend to be a good time for a quick meal before heading back to the sand, while evenings suit a takeout dinner after a long beach day. Because we're a takeout and pickup spot, plan on taking your food with you, whether that's to the boardwalk, the bay or home. Our location page has the address and a map if you're coming from elsewhere in San Diego.",
+      "Lunch hours tend to be a good time for a quick meal before heading back to the sand, while evenings suit a takeout dinner after a long beach day. You can eat in at our indoor or outdoor seating, or take your food with you to the boardwalk, the bay or home. Our location page has the address and a map if you're coming from elsewhere in San Diego.",
     ],
     relatedDishes: [],
     relatedPaths: ["/location", "/faq/where-are-you-located", "/faq/can-i-order-ahead-and-skip-the-line", "/contact"],
@@ -267,7 +267,7 @@ export const faqPages: FaqPage[] = [
     metaDescription:
       "Pita Bowl's sauces include garlic sauce, garlic aioli, tahini and jalapeño cilantro dressing, plus three dips. Extra sauce sides are $1 each.",
     answer:
-      "Our menu items use garlic sauce, garlic aioli, tahini sauce and jalapeño cilantro dressing, alongside three dips: hummus, tzatziki and roasted eggplant. The online ordering menu shows the full current sauce list when you build a bowl or wrap.",
+      "Our menu items use garlic sauce, garlic aioli, tahini sauce and jalapeño cilantro dressing, alongside three dips: hummus, tzatziki and roasted eggplant. Hot sauce is available if you want to add heat, and the online ordering menu shows the full current sauce list when you build a bowl or wrap.",
     details: [
       "Each signature item comes with its own pairing. Garlic sauce tops the Pita Nachos, both shawarma fries and the Zesty Chicken Wrap. Garlic aioli goes on the Cali Shawarma Wrap. Tahini dressing finishes the Chicken Pita Bowl, Chicken Tikka Bowl and Beef Wrap, and the Earth Bowl gets the herby jalapeño cilantro dressing.",
       "The dips work almost like sauces too. Hummus is creamy and nutty, tzatziki is cool and tangy from yogurt and cucumber, and roasted eggplant dip is smoky.",
@@ -275,7 +275,7 @@ export const faqPages: FaqPage[] = [
       "If you're not sure which to choose, garlic sauce is the boldest, tahini is nutty and mellow, and the jalapeño cilantro dressing is the freshest and brightest. Ask at the counter if you'd like to know what's in a particular sauce.",
     ],
     relatedDishes: ["build-your-own-bowl", "pita-nachos"],
-    relatedPaths: ["/guides/what-is-toum-garlic-sauce", "/guides/what-is-jalapeno-cilantro-sauce", "/guides/how-to-choose-a-dip-for-your-bowl"],
+    relatedPaths: ["/guides/what-is-toum-garlic-sauce", "/guides/what-is-jalapeno-cilantro-sauce", "/guides/how-to-choose-a-dip-for-your-bowl", "/faq/is-your-food-spicy"],
   },
   {
     slug: "what-proteins-do-you-have",
@@ -820,6 +820,6 @@ export const faqPages: FaqPage[] = [
       "If you're contacting us about an allergy, the more specific you are, the better. Name the allergen and the dish you're interested in, and we'll tell you what we know about how it's made. For directions, our location page has the address and how to find us near Belmont Park.",
     ],
     relatedDishes: [],
-    relatedPaths: ["/contact", "/location", "/faq/how-do-i-request-a-catering-quote"],
+    relatedPaths: ["/contact", "/location", "/faq/can-i-order-by-phone", "/faq/how-do-i-request-a-catering-quote"],
   },
 ];

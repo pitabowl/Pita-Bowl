@@ -34,7 +34,7 @@ function standardFaqs(item: MenuItem) {
         },
     {
       q: `How do I order the ${item.name}?`,
-      a: "Order online for pickup or takeout, or come by 3833 Mission Blvd in Mission Beach, San Diego.",
+      a: "Order online for pickup or delivery, call 858-210-9524, or come by 3833 Mission Blvd in Mission Beach, San Diego.",
     },
   ];
   if (item.price) {
