@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { CateringForm } from "./CateringForm";
 import { OrderButton } from "@/components/OrderButton";
 import { Section, Container } from "@/components/Section";
 import { ValuePropBadges } from "@/components/Badge";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Catering in San Diego — Seed-Oil-Free Group Orders",
-  alternates: { canonical: "/catering" },
   description:
-    "Cater your next event with Pita Bowl. Group-friendly, fresh daily, customizable. Seed oil free Mediterranean bowls and wraps.",
-  openGraph: {
-    title: "Catering | Pita Bowl",
-    description: "Group orders and catering. Fresh, customizable, seed oil free.",
-  },
-};
+    "Catering for offices, parties and events in San Diego. Shawarma, falafel and Mediterranean bowls and wraps, made fresh daily with no seed oils. Request a quote.",
+  path: "/catering",
+});
 
 export default function CateringPage() {
   return (

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Section, Container } from "@/components/Section";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
-  alternates: { canonical: "/privacy" },
-  description: "Privacy policy for Pita Bowl website and services.",
-};
+  description:
+    "How Pita Bowl handles information you share through our website, contact and catering forms, and online ordering.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

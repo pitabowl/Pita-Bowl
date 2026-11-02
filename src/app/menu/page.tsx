@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { JsonLd, SCHEMA_IDS, pageMetadata } from "@/lib/seo";
+import { dishSlugForItem } from "@/data/dishes";
+import { SITE_URL } from "@/config/links";
 import { menuCategories } from "@/data/menu";
 import { OrderButton } from "@/components/OrderButton";
 import { MenuCategoryNav } from "@/components/MenuCategoryNav";
@@ -6,20 +9,54 @@ import { MenuItemCard } from "@/components/MenuItemCard";
 import { Section, Container } from "@/components/Section";
 import { ValuePropBadges } from "@/components/Badge";
 
-export const metadata: Metadata = {
-  title: "Menu — Shawarma Bowls, Wraps & Falafel in Mission Beach",
-  alternates: { canonical: "/menu" },
+export const metadata: Metadata = pageMetadata({
+  title: "Menu — Shawarma, Bowls & Falafel in Mission Beach",
   description:
-    "Build your bowl or wrap: choose base, dip, protein, toppings, sauce. Bowls & wraps, sides, sauces, and drinks. Seed oil free, fresh daily.",
-  openGraph: {
-    title: "Menu | Pita Bowl",
-    description: "Bowls, wraps, sides, sauces, and drinks. Seed oil free, fresh daily.",
-  },
+    "Full Pita Bowl menu: chicken and steak shawarma bowls, wraps, falafel, shawarma fries, baklava and more. Seed-oil-free and fresh daily in Mission Beach.",
+  path: "/menu",
+});
+
+/** Menu structured data; the Restaurant node (layout) points here via hasMenu. */
+const menuSchema = {
+  "@context": "https://schema.org",
+  "@type": "Menu",
+  "@id": SCHEMA_IDS.menu,
+  name: "Pita Bowl Menu",
+  url: `${SITE_URL}/menu`,
+  inLanguage: "en-US",
+  hasMenuSection: menuCategories
+    .map((c) => ({
+      ...c,
+      // "Featured" repeats items listed in other sections; keep only ones that aren't
+      items:
+        c.id === "featured"
+          ? c.items.filter(
+              (item) => !menuCategories.some((o) => o.id !== c.id && o.items.some((i) => i.name === item.name))
+            )
+          : c.items,
+    }))
+    .filter((c) => c.items.length > 0)
+    .map((c) => ({
+      "@type": "MenuSection",
+      name: c.name,
+      description: c.description,
+      hasMenuItem: c.items.map((item) => {
+        const slug = dishSlugForItem(item.id);
+        return {
+          "@type": "MenuItem",
+          ...(slug && { "@id": `${SITE_URL}/menu/${slug}#item`, url: `${SITE_URL}/menu/${slug}` }),
+          name: item.name,
+          description: item.description,
+          ...(item.price && { offers: { "@type": "Offer", price: item.price, priceCurrency: "USD" } }),
+        };
+      }),
+    })),
 };
 
 export default function MenuPage() {
   return (
     <>
+      <JsonLd data={menuSchema} />
       <Section className="border-b border-border/50 bg-gradient-to-br from-muted/20 via-background to-accent/10">
         <Container>
           <div className="flex flex-col items-center gap-8 text-center">

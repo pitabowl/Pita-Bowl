@@ -6,6 +6,7 @@ import { dishes, getDish, type Dish } from "@/data/dishes";
 import { menuCategories, type MenuItem } from "@/data/menu";
 import { LOCATION_URL, MENU_URL, SITE_URL } from "@/config/links";
 import { OrderButton } from "@/components/OrderButton";
+import { JsonLd, SCHEMA_IDS, pageMetadata } from "@/lib/seo";
 import { Badge } from "@/components/Badge";
 import { Section, Container } from "@/components/Section";
 
@@ -45,16 +46,12 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const dish = getDish(params.slug);
   if (!dish) return {};
   const { item } = menuEntry(dish);
-  return {
+  return pageMetadata({
     title: dish.seoTitle,
     description: dish.metaDescription,
-    alternates: { canonical: `/menu/${dish.slug}` },
-    openGraph: {
-      title: `${item.name} | Pita Bowl`,
-      description: dish.metaDescription,
-      images: item.image ? [item.image] : undefined,
-    },
-  };
+    path: `/menu/${dish.slug}`,
+    image: item.image,
+  });
 }
 
 export default function DishPage({ params }: { params: { slug: string } }) {
@@ -67,11 +64,24 @@ export default function DishPage({ params }: { params: { slug: string } }) {
     .filter((d): d is Dish => !!d)
     .map((d) => ({ dish: d, item: menuEntry(d).item }));
 
+  // Other dishes in the same menu section, for the "More …" links
+  const siblings = dishes
+    .filter((d) => d.slug !== dish.slug && !dish.pairsWith.includes(d.slug))
+    .map((d) => ({ dish: d, ...menuEntry(d) }))
+    .filter(({ category: c }) => c.id === category.id);
+
+  const diets = [
+    item.tags.includes("vegan") && "https://schema.org/VeganDiet",
+    item.tags.includes("vegetarian") && "https://schema.org/VegetarianDiet",
+  ].filter(Boolean);
+
   const pageUrl = `${SITE_URL}/menu/${dish.slug}`;
-  const jsonLd = [
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
     {
-      "@context": "https://schema.org",
       "@type": "MenuItem",
+      "@id": `${pageUrl}#item`,
       name: item.name,
       description: item.description,
       url: pageUrl,
@@ -79,14 +89,23 @@ export default function DishPage({ params }: { params: { slug: string } }) {
       ...(item.price && {
         offers: { "@type": "Offer", price: item.price, priceCurrency: "USD" },
       }),
-      ...(item.tags.includes("vegan") && { suitableForDiet: "https://schema.org/VeganDiet" }),
-      ...(item.tags.includes("vegetarian") && {
-        suitableForDiet: "https://schema.org/VegetarianDiet",
-      }),
+      ...(diets.length > 0 && { suitableForDiet: diets }),
     },
     {
-      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": pageUrl,
+      url: pageUrl,
+      name: `${item.name} | Pita Bowl`,
+      description: dish.metaDescription,
+      isPartOf: { "@id": SCHEMA_IDS.website },
+      about: { "@id": SCHEMA_IDS.restaurant },
+      mainEntity: { "@id": `${pageUrl}#item` },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+      primaryImageOfPage: item.image ? `${SITE_URL}${item.image}` : undefined,
+    },
+    {
       "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
         { "@type": "ListItem", position: 2, name: "Menu", item: `${SITE_URL}${MENU_URL}` },
@@ -94,19 +113,20 @@ export default function DishPage({ params }: { params: { slug: string } }) {
       ],
     },
     {
-      "@context": "https://schema.org",
       "@type": "FAQPage",
+      "@id": `${pageUrl}#faq`,
       mainEntity: faqs.map((f) => ({
         "@type": "Question",
         name: f.q,
         acceptedAnswer: { "@type": "Answer", text: f.a },
       })),
     },
-  ];
+    ],
+  };
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd data={jsonLd} />
 
       <Section className="border-b border-border/50 bg-gradient-to-br from-muted/20 via-background to-accent/10 py-12 md:py-20">
         <Container>
@@ -188,6 +208,24 @@ export default function DishPage({ params }: { params: { slug: string } }) {
                     >
                       <span className="font-semibold">{p.name}</span>
                       {p.price && <span className="block text-sm text-primary mt-1">${p.price}</span>}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {siblings.length > 0 && (
+            <div>
+              <h2 className="text-2xl font-bold mb-4">More {category.name.toLowerCase()}</h2>
+              <ul className="flex flex-wrap gap-3">
+                {siblings.map(({ dish: d, item: s }) => (
+                  <li key={d.slug}>
+                    <Link
+                      href={`/menu/${d.slug}`}
+                      className="inline-block rounded-full border border-border/50 bg-card px-4 py-2 text-sm font-medium hover:border-primary/30 hover:text-primary"
+                    >
+                      {s.name}
                     </Link>
                   </li>
                 ))}

@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { OrderButton } from "@/components/OrderButton";
 import { Section, Container } from "@/components/Section";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Offers — FIT Members Get 15% Off",
-  alternates: { canonical: "/offers" },
-  description: "FIT members get 15% off at checkout. Pita Bowl San Diego.",
-  openGraph: {
-    title: "Offers | Pita Bowl",
-    description: "FIT 15% off at checkout.",
-  },
-};
+  description:
+    "FIT members get 15% off at Pita Bowl in Mission Beach, San Diego. See current offers on our seed-oil-free shawarma bowls and wraps.",
+  path: "/offers",
+});
 
 const OFFERS = [
   {

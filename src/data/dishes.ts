@@ -115,7 +115,7 @@ export const dishes: Dish[] = [
   {
     slug: "build-your-own-bowl",
     itemId: "build-your-own-bowl",
-    seoTitle: "Build Your Own Bowl — Custom Mediterranean Bowls in San Diego",
+    seoTitle: "Build Your Own Mediterranean Bowl in San Diego",
     metaDescription:
       "Pick your base, dip, protein, toppings and sauce. Build your own Mediterranean bowl at Pita Bowl in Mission Beach, all cooked with no seed oils.",
     intro: [
@@ -324,7 +324,7 @@ export const dishes: Dish[] = [
       "Chicken Shawarma Fries are exactly what they sound like: a full order of fries loaded with chicken shawarma and drizzled with garlic sauce.",
       "Most loaded fries are cooked in seed oil. Ours aren't. They're a favorite after a day on the sand, and big enough to share or eat as a meal.",
     ],
-    pairsWith: ["zesty-chicken-wrap", "chicken-pita-bowl", "dip-and-pita"],
+    pairsWith: ["zesty-chicken-wrap", "kids-chicken-tenders", "dip-and-pita"],
     faqs: [
       {
         q: "What oil are the fries cooked in?",
@@ -361,7 +361,7 @@ export const dishes: Dish[] = [
   {
     slug: "falafel",
     itemId: "side-3-falafel",
-    seoTitle: "Falafel in Mission Beach, San Diego — Made Without Seed Oils",
+    seoTitle: "Falafel in Mission Beach, San Diego — No Seed Oils",
     metaDescription:
       "Crispy chickpea falafel cooked without seed oils. Order 3 or 5 on the side, or in our Earth Bowl and Falafel Wrap. Pita Bowl, Mission Blvd.",
     intro: [
@@ -504,7 +504,7 @@ export const dishes: Dish[] = [
       "Lazy cake is a no-bake chocolate biscuit cake that's hugely popular across the Middle East. It's tea biscuits folded into a rich chocolate and condensed-milk mixture, chilled, and sliced.",
       "It's called \"lazy\" because it skips the oven, not because it's low effort to make. It's dense and fudgy, somewhere between a brownie and a chocolate bar, and we make ours in-house.",
     ],
-    pairsWith: ["dubai-chocolate-brownie", "tiramisu", "earth-bowl"],
+    pairsWith: ["dubai-chocolate-brownie", "tiramisu", "kids-chicken-tenders"],
     faqs: [
       {
         q: "What is lazy cake?",
