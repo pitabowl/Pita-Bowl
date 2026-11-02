@@ -12,12 +12,12 @@ export const visitFaqs: FaqPage[] = [
     q: "Does Pita Bowl deliver?",
     seoTitle: "Does Pita Bowl Deliver? Delivery in Mission Beach",
     metaDescription:
-      "Yes. Get Pita Bowl delivered through our online ordering or the delivery apps, or pick up or eat in at 3833 Mission Blvd in Mission Beach, San Diego.",
+      "Yes. Get Pita Bowl delivered through our Toast online ordering, Uber Eats, Grubhub or DoorDash, or pick up or eat in at 3833 Mission Blvd, Mission Beach.",
     answer:
-      "Yes. You can order delivery through our online ordering on Toast, and Pita Bowl is also on the delivery apps. Pickup and dine-in at 3833 Mission Blvd are always options too.",
+      "Yes. You can order delivery through our own online ordering on Toast, or on Uber Eats, Grubhub and DoorDash. Pickup and dine-in at 3833 Mission Blvd are always options too.",
     details: [
       "Ordering through our own website is the most direct route. The order button opens our Toast online ordering menu, where you can choose delivery or pickup, customize your bowls and wraps, and pay at checkout.",
-      "If you already use a delivery app, you can find us there as well. Delivery areas, fees and timing are set at checkout and depend on your address and how busy it is, so check them when you place the order.",
+      "If you already use Uber Eats, Grubhub or DoorDash, search for Pita Bowl in Mission Beach and you'll find us there. Delivery areas, fees and timing are set at checkout and depend on your address and how busy it is, so check them when you place the order.",
       "Some dishes travel better than others. Bowls hold up well on the way, and asking for dressing or sauce on the side keeps greens crisp. Fries are best eaten soon after they arrive.",
       "For large group orders and events, use the catering page instead. A quote request lets us plan the food and timing for your headcount, which works better than a very large app order.",
     ],
