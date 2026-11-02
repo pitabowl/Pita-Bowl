@@ -2,6 +2,8 @@ import { SITE_URL } from "@/config/links";
 import { dishes } from "@/data/dishes";
 import { menuCategories } from "@/data/menu";
 import { BUSINESS } from "@/lib/seo";
+import { cateringCopy, dietCopy } from "@/data/landing-copy";
+import { guides } from "@/data/guides";
 
 export const dynamic = "force-static";
 
@@ -41,6 +43,18 @@ ${dishes
     return `- [${item.name}](${SITE_URL}/menu/${d.slug})${item.price ? ` — $${item.price}` : ""}: ${item.description}`;
   })
   .join("\n")}
+
+## Dietary options
+
+${dietCopy.map((d) => `- [${d.h1}](${SITE_URL}/dietary/${d.slug}): ${d.metaDescription}`).join("\n")}
+
+## Catering
+
+${cateringCopy.map((c) => `- [${c.h1}](${SITE_URL}/catering/${c.slug}): ${c.metaDescription}`).join("\n")}
+
+## Guides
+
+${guides.map((g) => `- [${g.title}](${SITE_URL}/guides/${g.slug}): ${g.summary}`).join("\n")}
 `;
 
   return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8" } });

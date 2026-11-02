@@ -14,6 +14,8 @@ import { OrderButton } from "@/components/OrderButton";
 const footerLinks = [
   { href: MENU_URL, label: "Menu" },
   { href: CATERING_URL, label: "Catering" },
+  { href: "/dietary", label: "Dietary options" },
+  { href: "/guides", label: "Guides" },
   { href: OFFERS_URL, label: "Offers" },
   { href: LOCATION_URL, label: "Location" },
   { href: ABOUT_URL, label: "About" },

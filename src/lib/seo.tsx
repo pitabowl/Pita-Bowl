@@ -121,3 +121,66 @@ export function websiteSchema() {
 export function JsonLd({ data }: { data: object }) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
+
+export interface Crumb {
+  name: string;
+  /** Path starting with "/" */
+  path: string;
+}
+
+/** WebPage + BreadcrumbList (+ FAQPage) nodes for a content page, linked to the site graph. */
+export function pageGraph({
+  path,
+  title,
+  description,
+  crumbs,
+  faqs,
+  mainEntity,
+  type = "WebPage",
+}: {
+  path: string;
+  title: string;
+  description: string;
+  crumbs: Crumb[];
+  faqs?: { q: string; a: string }[];
+  mainEntity?: object;
+  type?: "WebPage" | "CollectionPage";
+}) {
+  const url = `${SITE_URL}${path}`;
+  const nodes: object[] = [
+    {
+      "@type": type,
+      "@id": url,
+      url,
+      name: `${title} | ${BUSINESS.name}`,
+      description,
+      inLanguage: "en-US",
+      isPartOf: { "@id": SCHEMA_IDS.website },
+      about: { "@id": SCHEMA_IDS.restaurant },
+      breadcrumb: { "@id": `${url}#breadcrumb` },
+      ...(mainEntity && { mainEntity }),
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${url}#breadcrumb`,
+      itemListElement: [{ name: "Home", path: "" }, ...crumbs].map((c, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: c.name,
+        item: `${SITE_URL}${c.path}`,
+      })),
+    },
+  ];
+  if (faqs?.length) {
+    nodes.push({
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    });
+  }
+  return { "@context": "https://schema.org", "@graph": nodes };
+}

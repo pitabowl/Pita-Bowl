@@ -7,6 +7,8 @@ import { menuCategories, type MenuItem } from "@/data/menu";
 import { LOCATION_URL, MENU_URL, SITE_URL } from "@/config/links";
 import { OrderButton } from "@/components/OrderButton";
 import { JsonLd, SCHEMA_IDS, pageMetadata } from "@/lib/seo";
+import { dietsForDish } from "@/data/landing";
+import { guides } from "@/data/guides";
 import { Badge } from "@/components/Badge";
 import { Section, Container } from "@/components/Section";
 
@@ -21,10 +23,15 @@ function menuEntry(dish: Dish) {
 /** FAQs every dish gets, filled from its menu data. */
 function standardFaqs(item: MenuItem) {
   const faqs = [
-    {
-      q: `Is the ${item.name} cooked with seed oils?`,
-      a: "No. Pita Bowl doesn't use seed oils (canola, soybean and the like) in anything. We cook with olive oil and avocado oil.",
-    },
+    item.categoryId === "desserts"
+      ? {
+          q: `What's in the ${item.name}?`,
+          a: "It's one of our housemade desserts. If you need the full ingredient list for an allergy or diet, ask us when you order and we'll check for you.",
+        }
+      : {
+          q: `Is the ${item.name} cooked with seed oils?`,
+          a: "No. Pita Bowl doesn't use seed oils (canola, soybean and the like) in anything. We cook with olive oil and avocado oil.",
+        },
     {
       q: `How do I order the ${item.name}?`,
       a: "Order online for pickup or takeout, or come by 3833 Mission Blvd in Mission Beach, San Diego.",
@@ -69,6 +76,8 @@ export default function DishPage({ params }: { params: { slug: string } }) {
     .filter((d) => d.slug !== dish.slug && !dish.pairsWith.includes(d.slug))
     .map((d) => ({ dish: d, ...menuEntry(d) }))
     .filter(({ category: c }) => c.id === category.id);
+
+  const guidesForDish = guides.filter((g) => g.relatedDishes.includes(dish.slug));
 
   const diets = [
     item.tags.includes("vegan") && "https://schema.org/VeganDiet",
@@ -226,6 +235,28 @@ export default function DishPage({ params }: { params: { slug: string } }) {
                       className="inline-block rounded-full border border-border/50 bg-card px-4 py-2 text-sm font-medium hover:border-primary/30 hover:text-primary"
                     >
                       {s.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {(dietsForDish(dish.slug).length > 0 || guidesForDish.length > 0) && (
+            <div>
+              <h2 className="text-2xl font-bold mb-4">Learn more</h2>
+              <ul className="flex flex-wrap gap-3">
+                {dietsForDish(dish.slug).map((d) => (
+                  <li key={d.slug}>
+                    <Link href={`/dietary/${d.slug}`} className="inline-block rounded-full border border-border/50 bg-card px-4 py-2 text-sm font-medium hover:border-primary/30 hover:text-primary">
+                      {d.h1}
+                    </Link>
+                  </li>
+                ))}
+                {guidesForDish.map((g) => (
+                  <li key={g.slug}>
+                    <Link href={`/guides/${g.slug}`} className="inline-block rounded-full border border-border/50 bg-card px-4 py-2 text-sm font-medium hover:border-primary/30 hover:text-primary">
+                      {g.title}
                     </Link>
                   </li>
                 ))}

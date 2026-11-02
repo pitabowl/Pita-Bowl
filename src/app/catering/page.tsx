@@ -4,6 +4,8 @@ import { CateringForm } from "./CateringForm";
 import { OrderButton } from "@/components/OrderButton";
 import { Section, Container } from "@/components/Section";
 import { ValuePropBadges } from "@/components/Badge";
+import { cateringCopy } from "@/data/landing-copy";
+import { LinkGrid } from "@/components/content/PageParts";
 
 export const metadata: Metadata = pageMetadata({
   title: "Catering in San Diego — Seed-Oil-Free Group Orders",
@@ -36,7 +38,16 @@ export default function CateringPage() {
         </Container>
       </Section>
 
-      <Section className="bg-background">
+      <Section className="bg-background pb-0 md:pb-0">
+        <Container className="max-w-4xl">
+          <LinkGrid
+            title="Catering by occasion"
+            links={cateringCopy.map((c) => ({ href: `/catering/${c.slug}`, title: c.h1 }))}
+          />
+        </Container>
+      </Section>
+
+      <Section id="quote" className="bg-background scroll-mt-24">
         <Container>
           <div className="mx-auto max-w-3xl">
             <div className="rounded-3xl border border-border/50 bg-card p-10 md:p-14 shadow-xl">
